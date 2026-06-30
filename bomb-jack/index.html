@@ -3,57 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bomb Jack V4</title>
+    <title>Bomb Jack - v1.1</title>
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body, html {
-            height: 100%;
-            background: #000;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
+        body, html { 
+            margin:0; padding:0; height:100%; background:#000; overflow:hidden; 
         }
         .header {
-            background: #111;
-            color: white;
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            background:#111; color:white; padding:10px 15px; 
+            display:flex; align-items:center; justify-content:space-between;
             z-index: 10;
         }
-        .back-btn {
-            background: #00ccff;
-            color: black;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
+        button { 
+            background:#00ccff; color:black; border:none; padding:8px 16px; 
+            border-radius:6px; cursor:pointer; font-size:16px;
         }
-        #game {
-            width: 100%;
-            height: calc(100vh - 56px);
-            border: none;
+        #game { 
+            width:100%; height:calc(100vh - 56px); border:none; 
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <button class="back-btn" onclick="window.location.href='../'">← Back</button>
-        <h2>Bomb Jack</h2>
-        <button class="back-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+        <button onclick="window.location.href='../'">← Back to Bookmarks</button>
+        <h2>Bomb Jack <small style="font-size:0.7em;">v1.1</small></h2>
+        <button onclick="toggleFullscreen()">⛶ Fullscreen</button>
     </div>
+    
+    <iframe id="game" allowfullscreen></iframe>
 
-    <iframe id="game" 
-            src="https://www.retrogames.cc/embed/7982-bomb-jack-set-1.html" 
-            allowfullscreen>
-    </iframe>
-
+    <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
     <script>
+        EJS_mainURL = "https://cdn.emulatorjs.org/stable/";
+        EJS_core = "arcade";
+        EJS_gameUrl = "https://www.emulatorjs.com/api/fba?name=bombjack.zip";
+        EJS_startButton = true;
+
         function toggleFullscreen() {
-            const game = document.getElementById('game');
+            const elem = document.getElementById('game');
             if (!document.fullscreenElement) {
-                game.requestFullscreen();
+                elem.requestFullscreen();
             } else {
                 document.exitFullscreen();
             }
