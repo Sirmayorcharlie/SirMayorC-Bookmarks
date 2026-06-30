@@ -34,8 +34,9 @@
         EJS_gameUrl = "https://www.emulatorjs.com/api/fba?name=bombjack.zip";
         EJS_pathtodata = "https://sirmayorcharlie.github.io/SirMayorC-Bookmarks/stable/data/";
         
-        // Disable the splash screen "Play Now" button to enforce auto-start
+        // Configuration parameters to force immediate execution
         EJS_startButton = false; 
+        EJS_startOnLoaded = true; // Forces the core engine to bypass the splash screen completely
 
         function toggleFullscreen() {
             const elem = document.getElementById('game-container');
