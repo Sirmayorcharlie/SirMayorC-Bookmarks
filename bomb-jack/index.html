@@ -3,29 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bomb Jack - v1.1</title>
+    <title>Bomb Jack - v1.2</title>
     <style>
-        body, html { 
-            margin:0; padding:0; height:100%; background:#000; overflow:hidden; 
-        }
+        body, html { margin:0; padding:0; height:100%; background:#000; overflow:hidden; }
         .header {
             background:#111; color:white; padding:10px 15px; 
             display:flex; align-items:center; justify-content:space-between;
-            z-index: 10;
         }
         button { 
             background:#00ccff; color:black; border:none; padding:8px 16px; 
             border-radius:6px; cursor:pointer; font-size:16px;
         }
-        #game { 
-            width:100%; height:calc(100vh - 56px); border:none; 
-        }
+        #game { width:100%; height:calc(100vh - 56px); border:none; }
     </style>
 </head>
 <body>
     <div class="header">
         <button onclick="window.location.href='../'">← Back to Bookmarks</button>
-        <h2>Bomb Jack <small style="font-size:0.7em;">v1.1</small></h2>
+        <h2>Bomb Jack <small style="font-size:0.7em;">v1.2</small></h2>
         <button onclick="toggleFullscreen()">⛶ Fullscreen</button>
     </div>
     
@@ -37,14 +32,12 @@
         EJS_core = "arcade";
         EJS_gameUrl = "https://www.emulatorjs.com/api/fba?name=bombjack.zip";
         EJS_startButton = true;
+        EJS_pathtodata = "https://cdn.emulatorjs.org/stable/";
 
         function toggleFullscreen() {
             const elem = document.getElementById('game');
-            if (!document.fullscreenElement) {
-                elem.requestFullscreen();
-            } else {
-                document.exitFullscreen();
-            }
+            if (!document.fullscreenElement) elem.requestFullscreen();
+            else document.exitFullscreen();
         }
     </script>
 </body>
