@@ -10,40 +10,48 @@
             padding: 0;
             height: 100%;
             background: #000;
-            overflow: hidden;
+            color: #fff;
             font-family: Arial, sans-serif;
+            overflow: hidden;
         }
-        .container {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        #game {
-            flex: 1;
-            border: none;
-        }
-        .controls {
+        .header {
+            background: #111;
             padding: 10px;
             text-align: center;
-            background: #111;
-            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .back-btn {
+            background: #00ccff;
+            color: #000;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #game {
+            width: 100%;
+            height: calc(100vh - 56px);
+            border: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="controls">
-            <h2>Bomb Jack</h2>
-            <button onclick="toggleFullscreen()">Fullscreen</button>
-        </div>
-        <iframe id="game" src="https://www.retrogames.cc/embed/7982-bomb-jack-set-1.html" allowfullscreen></iframe>
+    <div class="header">
+        <button class="back-btn" onclick="window.history.back()">← Back to Bookmarks</button>
+        <h2>Bomb Jack</h2>
+        <button class="back-btn" onclick="toggleFullscreen()">Fullscreen</button>
     </div>
+    
+    <iframe id="game" src="https://www.retrogames.cc/embed/7982-bomb-jack-set-1.html" allowfullscreen></iframe>
 
     <script>
         function toggleFullscreen() {
             const elem = document.getElementById('game');
             if (!document.fullscreenElement) {
-                elem.requestFullscreen().catch(err => console.log(err));
+                elem.requestFullscreen();
             } else {
                 document.exitFullscreen();
             }
