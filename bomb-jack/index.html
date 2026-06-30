@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bomb Jack - v1.2</title>
+    <title>Bomb Jack - v1.3</title>
     <style>
         body, html { margin:0; padding:0; height:100%; background:#000; overflow:hidden; }
         .header {
@@ -15,19 +15,22 @@
             border-radius:6px; cursor:pointer; font-size:16px;
         }
         #game { width:100%; height:calc(100vh - 56px); border:none; }
+        .status { padding:5px; text-align:center; background:#222; color:#0f0; font-size:14px; }
     </style>
 </head>
 <body>
     <div class="header">
-        <button onclick="window.location.href='../'">← Back to Bookmarks</button>
-        <h2>Bomb Jack <small style="font-size:0.7em;">v1.2</small></h2>
+        <button onclick="window.location.href='../'">← Back</button>
+        <h2>Bomb Jack <small>v1.3</small></h2>
         <button onclick="toggleFullscreen()">⛶ Fullscreen</button>
     </div>
-    
+    <div class="status" id="status">Loading game...</div>
     <iframe id="game" allowfullscreen></iframe>
 
     <script src="https://cdn.emulatorjs.org/stable/data/loader.js"></script>
     <script>
+        const statusEl = document.getElementById('status');
+
         EJS_mainURL = "https://cdn.emulatorjs.org/stable/";
         EJS_core = "arcade";
         EJS_gameUrl = "https://www.emulatorjs.com/api/fba?name=bombjack.zip";
@@ -39,6 +42,13 @@
             if (!document.fullscreenElement) elem.requestFullscreen();
             else document.exitFullscreen();
         }
+
+        // Show status updates
+        window.addEventListener('message', (e) => {
+            if (e.data && e.data.act === 'ejs-game-started') {
+                statusEl.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
