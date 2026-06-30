@@ -27,16 +27,17 @@
     <div id="game-container"></div>
 
     <script>
-        // 1. Declare configurations
         EJS_player = '#game-container'; 
         EJS_mainURL = "https://sirmayorcharlie.github.io/SirMayorC-Bookmarks/stable/";
         EJS_core = "arcade";
-        EJS_gameUrl = "https://www.emulatorjs.com/api/fba?name=bombjack.zip";
+        
+        // Target updated to your new roms folder
+        EJS_gameUrl = "https://sirmayorcharlie.github.io/SirMayorC-Bookmarks/stable/roms/bombjack.zip";
+        
         EJS_pathtodata = "https://sirmayorcharlie.github.io/SirMayorC-Bookmarks/stable/data/";
         
-        // Configuration parameters to force immediate execution
         EJS_startButton = false; 
-        EJS_startOnLoaded = true; // Forces the core engine to bypass the splash screen completely
+        EJS_startOnLoaded = true;
 
         function toggleFullscreen() {
             const elem = document.getElementById('game-container');
