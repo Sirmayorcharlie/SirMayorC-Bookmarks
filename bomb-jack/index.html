@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bomb Jack</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #000;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        #game {
+            flex: 1;
+            border: none;
+        }
+        .controls {
+            padding: 10px;
+            text-align: center;
+            background: #111;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <h2>Bomb Jack</h2>
+            <button onclick="toggleFullscreen()">Fullscreen</button>
+        </div>
+        <iframe id="game" src="https://www.retrogames.cc/embed/7982-bomb-jack-set-1.html" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        function toggleFullscreen() {
+            const elem = document.getElementById('game');
+            if (!document.fullscreenElement) {
+                elem.requestFullscreen().catch(err => console.log(err));
+            } else {
+                document.exitFullscreen();
+            }
+        }
+    </script>
+</body>
+</html>
