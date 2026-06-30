@@ -14,43 +14,34 @@
             background:#00ccff; color:black; border:none; padding:8px 16px; 
             border-radius:6px; cursor:pointer; font-size:16px;
         }
-        /* Changed to target the container class/id EmulatorJS will look for */
         #game-container { width:100%; height:calc(100vh - 56px); }
-        .status { padding:5px; text-align:center; background:#222; color:#0f0; font-size:14px; }
     </style>
 </head>
 <body>
     <div class="header">
         <button onclick="window.location.href='../'">← Back</button>
-        <h2>Bomb Jack</h2>
+        <h2>Bomb Jack <small>v1.3</small></h2>
         <button onclick="toggleFullscreen()">⛶ Fullscreen</button>
     </div>
-    <div class="status" id="status">Loading game...</div>
     
     <div id="game-container"></div>
 
     <script>
-        const statusEl = document.getElementById('status');
-
         // 1. Declare configurations
-        EJS_player = '#game-container'; // Explicitly directs the loader where to construct the emulator
+        EJS_player = '#game-container'; 
         EJS_mainURL = "https://sirmayorcharlie.github.io/SirMayorC-Bookmarks/stable/";
         EJS_core = "arcade";
         EJS_gameUrl = "https://www.emulatorjs.com/api/fba?name=bombjack.zip";
-        EJS_startButton = true;
         EJS_pathtodata = "https://sirmayorcharlie.github.io/SirMayorC-Bookmarks/stable/data/";
+        
+        // Disable the splash screen "Play Now" button to enforce auto-start
+        EJS_startButton = false; 
 
         function toggleFullscreen() {
             const elem = document.getElementById('game-container');
             if (!document.fullscreenElement) elem.requestFullscreen();
             else document.exitFullscreen();
         }
-
-        window.addEventListener('message', (e) => {
-            if (e.data && e.data.act === 'ejs-game-started') {
-                statusEl.style.display = 'none';
-            }
-        });
     </script>
     
     <script src="https://sirmayorcharlie.github.io/SirMayorC-Bookmarks/stable/data/loader.js"></script>
